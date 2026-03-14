@@ -1,0 +1,197 @@
+Django 
+Create a folder and open the vs code in that folder
+Step 1 : create a virtual Environment using the command : python -m venv myenv 
+         myenv is the name of the virtual environment
+step 2: Activate the virtual Environment using the command : myenv\Scripts\activate
+step 3: Install Django in the virtual environment using the command : pip install django
+step 4: create a new Django project using the command : djanog-admin startproject myproject
+       Here myproject is the your name of the project
+       Then,
+       After creating the Django project you can see the myproject as the 
+       myproject
+       |
+       |__ manage.py
+       |__myproject
+          |
+          |__  __init__.py
+          |
+          |__ asgi.py
+          |__settings.py
+          |__urls.py
+          |__wsgi.py
+After creating the myproject
+
+Creating a poll app 
+step 1: start the app with the name of the app using the command: python manage.py startapp polls
+ polls is the name of the app
+ after 
+creating the app the polls app is created inside the myproject
+myproject
+       |
+       |__ manage.py
+       |__myproject
+       |  |
+       |  |__ __init__.py
+       |  |
+       |  |__ asgi.py
+       |  |__ settings.py
+       |  |__ urls.py
+       |  |__ wsgi.py
+       |
+       |__polls/
+          |__  __init__.py
+          |__ admin.py
+          |__ apps.py 											
+    	  |__ migrations/
+          |   |__ __init__.py
+          |
+    	  |__ models.py
+          |__ tests.py
+          |__ views.py
+ 
+views.py x
+----------
+ code #
+ from django.http import HttpResponse
+import datetime
+def index_view(request):
+    now = datetime.datetime.now()
+    html = "Time is {}".format(now)
+    return HttpResponse(html)
+
+url/polls x
+------------
+from django.urls import path
+from projectName.views import hello_geeks
+
+urlpatterns = [
+    path('geek/', hello_geeks),
+]
+This is the first code of the Django.
+we can add the .html and style.css files into 
+the Django by creating the templates for the .html files
+the django by creating the static for the style
+
+for the authentication defaulty the Django is default it has the dbsqlite3 data base 
+where we store the 
+auth_user
+django_admin_log
+django_session
+django_migrations
+this are the data tables
+for 
+authentication the user we need to run the query in the gitbash (the user details can be added externally without using the web browser)
+python manage.py createsuperuser
+Username (leave balnk to use ) : enter the username
+Email address : mail@gmail.com
+Password : 
+ but we write the direct code we do not need to  give the details of the user by externally using the gitbash
+After this if we need database migrations use the commands before running the server
+python manage.py makemigrations
+python manage.py migrate
+then you can run the server after execution of the above commands 
+After adding the html templates and static/ style.css 
+the structure of djnago project looks like
+myproject/
+│
+├── manage.py
+│
+├── myproject/                 # Main project configuration
+│       ├── __init__.py
+│       ├── asgi.py
+│       ├── settings.py
+│       ├── urls.py
+│       └── wsgi.py
+│
+└── polls/                     # Django App
+|     │
+|     ├── migrations/
+|     │       └── __init__.py
+|     │
+|     ├── templates/             # HTML files 
+|     │       ├── login.html
+|     │       ├── signup.html
+|     │       └── dashboard.html
+|     │
+|     ├── static/                # Static files     
+|     |	      └── style.css
+|     │       
+|     │       
+|     │
+|     ├── __init__.py
+|     ├── admin.py
+|     ├── apps.py
+|     ├── models.py
+|     ├── tests.py
+|     ├── views.py
+|     └── urls.py
+│
+└── db.sqlite3
+
+don't worry about the large structure of the Django project , we only deal with the certain things in the myproject and polls app . 
+we dont require the virtual environment not much to use we only use it for the to run the server as the command python manage.py runserver
+
+ok now this are the basics of the Django now above process i created a user authentication using the Django through the inbuilt data base which is 
+dbsqlite3 which i created entire UI for the user for login and logout operations .
+
+Now, we will dive deep into the Django 
+
+Django Architecture and Working
+---------------------------------
+Django is based on MVT (Model-View-Template) architecture. MVT is a software design pattern for developing a web application. It's structure has the following three parts :
+
+Model: Acts as the data interface. It defines the structure of your data and is usually backed by a database (e.g., MySQL, PostgreSQL).
+View: A Python function or class that handles web requests. It interacts with the Model and renders a response, typically by passing data to a Template.
+Template: Contains static HTML mixed with Django’s templating syntax. Templates are used to display dynamic data on the web page.
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Views in Django
+-------------------
+In Django’s MVT architecture, views handle user requests and return responses. They act as a bridge between models (data) and templates (UI), deciding what the user sees in the browser.
+Types of the Django views
+--------------------------
+Django provides two main types of views to handle web requests and return responses:
+
+Function-Based Views (FBVs): Written as Python functions. They are simple and ideal for small features or straightforward logic, such as displaying a list of items, handling form submissions, or showing a single detail page.
+
+Class-Based Views (CBVs): Written as Python classes. They offer better organization, reusability, and support for object-oriented features. They are suited for complex applications, reusable components, or features that require handling multiple HTTP methods cleanly.
+
+Eample for the function based views:
+-------------------------------------
+views.py x
+----------
+ code #
+ from django.http import HttpResponse
+import datetime
+def index_view(request):
+    now = datetime.datetime.now()
+    html = "Time is {}".format(now)
+    return HttpResponse(html)
+
+urls/polls x
+------------
+from django.urls import path
+from projectName.views import hello_geeks
+
+urlpatterns = [
+    path('geek/', hello_geeks),
+]
+----------------------------------------------
+VIEWS
+for the class views just we need write the function inside the class and the path of the function can be modified in the urls.py
+Django - the FBV and CBV allows the CRUD operations
+Function-Based Views in Django also support CRUD operations (Create, Retrieve, Update and Delete), allowing you to interact with database models to perform common web application tasks.
+Django Class Based Views - CRUD Operations
+Django Class-Based Views (CBVs) make it easier to implement CRUD operations (Create, Read, Update, Delete) by providing built-in generic views. These views save time by handling common patterns with minimal code.
+----------------------------------------------
+URLS
+
+
+
+
+
+==============================================================================================================================================
+Necessary Things:
+1 . Google Authentication
+2. After the login into the account the user can see the profile page
+
+
